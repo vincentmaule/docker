@@ -43,7 +43,7 @@
       };
       printing = {
         enable = true;
-        drivers = ["hplip" "hplipWithPlugin"];
+        drivers = [pkgs.hplip];
       };
   };
   # Configure keymap in X11
