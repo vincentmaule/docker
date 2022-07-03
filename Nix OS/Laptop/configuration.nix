@@ -48,12 +48,7 @@
         drivers = [hplip hplipWithPlugin];
       };
 
-      };
     };
-
-  services.printing.enable = true;
-  services.printing.drivers = [ "pkgs.hplip"];
-  
 
   # Configure keymap in X11
   # services.xserver.layout = "us";
