@@ -41,14 +41,13 @@
         enable = true;
         displayManager.gdm.enable = true;
         desktopManager.gnome.enable = true;
-        };
       };
       printing = {
         enable = true;
         drivers = ["hplip" "hplipWithPlugin"];
       };
-    }
-
+    };
+  }
   # Configure keymap in X11
   # services.xserver.layout = "us";
   # services.xserver.xkbOptions = {
@@ -75,14 +74,14 @@
       thunderbird
       virt-manager
     ];
-  }
+  };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
   # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
-  ]
+  ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
