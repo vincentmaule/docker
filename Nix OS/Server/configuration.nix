@@ -68,13 +68,21 @@
   # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.shaggy = {
-     isNormalUser = true;
-     extraGroups = [ "wheel" "libvitd" ]; # Enable ‘sudo’ for the user.
-     packages = with pkgs; [
-     ];
-   };
-
+  users.users = {
+    shaggy = {
+      isNormalUser = true;
+      extraGroups = [ "wheel" "libvitd" ]; # Enable ‘sudo’ for the user.
+      packages = with pkgs; [
+      ];
+    }
+    Cloudflared = {
+      isSystemUser = true;
+      packages = with pkgs; [
+        cloudflared
+      ];
+    };
+  };
+  
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
@@ -94,10 +102,13 @@
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
+  services = {
+#    tailscale.enable = true;
+    openssh.enable = true;
+  };
 
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [22];
+  networking.firewall.allowedTCPPorts = [17932];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
@@ -124,4 +135,3 @@
   system.stateVersion = "22.05"; # Did you read the comment?
 
 }
-
