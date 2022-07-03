@@ -35,6 +35,7 @@
   # };
 
   # Enable the X11 windowing system.
+  {
     services = {
       xserver = {
         enable = true;
@@ -46,7 +47,8 @@
         enable = true;
         drivers = ["hplip" "hplipWithPlugin"];
       };
-    }
+    };
+  };
 
   # Configure keymap in X11
   # services.xserver.layout = "us";
