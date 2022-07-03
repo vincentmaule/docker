@@ -35,8 +35,7 @@
   # };
 
   # Enable the X11 windowing system.
-  {
-    services = {
+  services = {
       xserver = {
         enable = true;
         displayManager.gdm.enable = true;
@@ -46,8 +45,7 @@
         enable = true;
         drivers = ["hplip" "hplipWithPlugin"];
       };
-    };
-  }
+  };
   # Configure keymap in X11
   # services.xserver.layout = "us";
   # services.xserver.xkbOptions = {
