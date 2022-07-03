@@ -35,7 +35,6 @@
   # };
 
   # Enable the X11 windowing system.
-  {
     services = {
       xserver = {
         enable = true;
@@ -51,7 +50,6 @@
 
       };
     };
-  }
 
   services.printing.enable = true;
   services.printing.drivers = [ "pkgs.hplip"];
