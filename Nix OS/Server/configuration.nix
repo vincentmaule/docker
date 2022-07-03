@@ -74,15 +74,16 @@
       packages = with pkgs; [
       ];
     };
-    Cloudflared = {
+    cloudflared = {
       isSystemUser = true;
+      group = "cloudflared";
       packages = with pkgs; [
         cloudflared
       ];
     };
   };
 
-  users.groups.Cloudflared.group = "Cloudflared";
+  users.groups.cloudflared = {};
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
