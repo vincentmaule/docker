@@ -35,20 +35,20 @@
   # };
 
   # Enable the X11 windowing system.
-    services = {
-      xserver = {
-        enable = true;
-        displayManager = {
-          gdm.enable = true;
-          gnome.enable = true;
-        };
-      };
-      printing = {
-        enable = true;
-        drivers = ["hplip" "hplipWithPlugin"];
-      };
+  # services.xserver.enable = true;
 
+  virtualisation = {
+    libvirtd = {
+      enable = true;
+      };
+    docker = {
+      enable = true;
+      enableNvidia = true;
+      enableOnBoot = true;
     };
+  };
+
+  programs.dconf.enable = true;
 
   # Configure keymap in X11
   # services.xserver.layout = "us";
@@ -69,20 +69,18 @@
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.shaggy = {
-    isNormalUser = true;
-    extraGroups = [ "wheel" "libvirtd" ]; # Enable ‘sudo’ for the user.
-    packages = with pkgs; [
-      firefox
-      thunderbird
-      virt-manager
-    ];
-  };
+     isNormalUser = true;
+     extraGroups = [ "wheel" "libvitd" ]; # Enable ‘sudo’ for the user.
+     packages = with pkgs; [
+     ];
+   };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
   # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
+    virt-manager
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -96,13 +94,21 @@
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
+  services.openssh.enable = true;
 
   # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
+  networking.firewall.allowedTCPPorts = [22];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
+
+  networking.interfaces.enp3s0.ipv4.addresses = [ {
+    address = "10.0.0.150";
+    prefixLength= 24;
+  } ];
+
+  networking.defaultGateway = "10.0.0.1";
+  networking.nameservers = [ "8.8.8.8" ];
 
   # Copy the NixOS configuration file and link it from the resulting system
   # (/run/current-system/configuration.nix). This is useful in case you
