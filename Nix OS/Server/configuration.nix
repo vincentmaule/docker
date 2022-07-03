@@ -43,7 +43,6 @@
       };
     docker = {
       enable = true;
-      enableNvidia = true;
       enableOnBoot = true;
     };
   };
@@ -74,7 +73,7 @@
       extraGroups = [ "wheel" "libvitd" ]; # Enable ‘sudo’ for the user.
       packages = with pkgs; [
       ];
-    }
+    };
     Cloudflared = {
       isSystemUser = true;
       packages = with pkgs; [
@@ -82,7 +81,9 @@
       ];
     };
   };
-  
+
+  users.groups.Cloudflared.group = "Cloudflared";
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
