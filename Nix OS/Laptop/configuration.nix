@@ -46,7 +46,7 @@
         enable = true;
         drivers = ["hplip" "hplipWithPlugin"];
       };
-    };
+    }
 
   # Configure keymap in X11
   # services.xserver.layout = "us";
