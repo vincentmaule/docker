@@ -72,7 +72,7 @@
   users.users = {
     shaggy = {
       isNormalUser = true;
-      extraGroups = [ "wheel" "libvirt" ]; # Enable ‘sudo’ for the user.
+      extraGroups = [ "wheel" "libvirtd" "qemu-libvirtd" ]; # Enable ‘sudo’ for the user.
       packages = with pkgs; [
       ];
     };
