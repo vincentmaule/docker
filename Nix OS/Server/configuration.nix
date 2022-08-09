@@ -79,7 +79,7 @@
     cloudflared = {
       isSystemUser = true;
       group = "cloudflared";
-      packages = with pkgs; [
+      packages = with pkgs; [ 
         cloudflared
       ];
     };
@@ -93,6 +93,7 @@ users.groups.cloudflared = {};
   # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
     virt-manager
+    tailscale
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -109,11 +110,15 @@ users.groups.cloudflared = {};
   services = {
 #    tailscale.enable = true;
     openssh.enable = true;
+    tailscale = {
+      enable = true;
+      port = 13957
+    }
   };
 
   # Open ports in the firewall.
   networking.firewall.allowedTCPPorts = [17932];
-  # networking.firewall.allowedUDPPorts = [ ... ];
+  networking.firewall.allowedUDPPorts = [ ${services.tailscale.port} ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
