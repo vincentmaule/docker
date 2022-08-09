@@ -112,8 +112,8 @@ users.groups.cloudflared = {};
     openssh.enable = true;
     tailscale = {
       enable = true;
-      port = 13957
-    }
+      port = 13957;
+    };
   };
 
   # Open ports in the firewall.
