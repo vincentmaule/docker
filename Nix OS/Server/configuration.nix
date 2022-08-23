@@ -119,19 +119,21 @@ users.groups.cloudflared = {};
   };
 
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [17932];
-  networking.firewall.allowedUDPPorts = [13975];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
+  networking = {
+    firewall = {
+      enable = true;
+      trustedInterfaces = [ "tailscale0" ];
+      allowedTCPPorts = [17932 22];
+      allowedUDPPorts = [services.tailscale.port];
+    };
+    interfaces.enp3s0.ipv4.addresses = [ {
+      address = "10.0.0.150";
+      prefixLength= 24;
+    } ];
 
-  networking.interfaces.enp3s0.ipv4.addresses = [ {
-    address = "10.0.0.150";
-    prefixLength= 24;
-  } ];
-
-  networking.defaultGateway = "10.0.0.1";
-  networking.nameservers = [ "8.8.8.8" ];
-
+    defaultGateway = "10.0.0.1";
+    nameservers = [ "8.8.8.8" ];
+  };
   # Copy the NixOS configuration file and link it from the resulting system
   # (/run/current-system/configuration.nix). This is useful in case you
   # accidentally delete configuration.nix.
