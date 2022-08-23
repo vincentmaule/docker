@@ -123,6 +123,7 @@ users.groups.cloudflared = {};
     firewall = {
       enable = true;
       trustedInterfaces = [ "tailscale0" ];
+      checkReversePath = ["loose"];
       allowedTCPPorts = [17932 22];
       allowedUDPPorts = [config.services.tailscale.port];
     };
