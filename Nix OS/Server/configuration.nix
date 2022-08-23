@@ -112,13 +112,12 @@ users.groups.cloudflared = {};
     openssh.enable = true;
     tailscale = {
       enable = true;
-      port = 13957;
     };
   };
 
   # Open ports in the firewall.
   networking.firewall.allowedTCPPorts = [17932];
-  networking.firewall.allowedUDPPorts = [ ${services.tailscale.port} ];
+  networking.firewall.allowedUDPPorts = [13975];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
