@@ -124,7 +124,7 @@ users.groups.cloudflared = {};
       enable = true;
       trustedInterfaces = [ "tailscale0" ];
       allowedTCPPorts = [17932 22];
-      allowedUDPPorts = [services.tailscale.port];
+      allowedUDPPorts = [config.services.tailscale.port];
     };
     interfaces.enp3s0.ipv4.addresses = [ {
       address = "10.0.0.150";
