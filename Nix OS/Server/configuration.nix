@@ -20,7 +20,7 @@
   nixpkgs = {
     config = {
       allowUnsupportedSystem = true;
-      allowBroken = trustedInterfaces;
+      allowBroken = "trustedInterfaces";
     };
   };
 
