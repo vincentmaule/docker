@@ -17,13 +17,6 @@
     binfmt.emulatedSystems = ["aarch64-linux"];
   };
 
-  nixpkgs = {
-    config = {
-      allowUnsupportedSystem = true;
-      allowBroken = true;
-    };
-  };
-
   networking.hostName = "nix-v-server"; # Define your hostname.
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
