@@ -1,11 +1,15 @@
 { config, pkgs, lib, ... }:
 {
 
+  import = [
+    <nixpkgs/nixos/modules/installer/sd-card/sd-images-aarch64.nix>
+  ];
+  
   boot = {
     kernelParams = ["cma=32M"];
     
     # !!! Otherwise (even if you have a Raspberry Pi 2 or 3), pick this:
-    kernelPackages = pkgs.linuxPackages_latest;
+    kernelPackages = pkgs.linuxPackages_rpi;
 
     # Cleanup tmp on startup
     cleanTmpDir = true;
@@ -48,5 +52,5 @@
   };
 
   # Set hostname
-  networking.hostName = "PI";
+  networking.hostName = "PI ";
 }
