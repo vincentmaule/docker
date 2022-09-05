@@ -43,14 +43,6 @@
   # !!! Adding a swap file is optional, but strongly recommended!
   swapDevices = [ { device = "/swapfile"; size = 1024; } ];
 
-  # Configure basic SSH access
-  services = {
-    openssh = {
-      enable = true;
-      permitRootLogin = true;
-    };
-  };
-
   # Set hostname
   networking.hostName = "pi";
 }
