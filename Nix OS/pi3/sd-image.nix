@@ -1,7 +1,7 @@
 { config, pkgs, lib, ... }:
 {
 
-  import = [
+  imports = [
     <nixpkgs/nixos/modules/installer/sd-card/sd-images-aarch64.nix>
   ];
   
