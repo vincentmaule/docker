@@ -16,7 +16,6 @@
     
     loader = {
       raspberryPi.version = 3;
-      raspberryPi.uboot.enable = true;
       raspberryPi.enable = true;
     };
   };
