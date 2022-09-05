@@ -5,7 +5,6 @@
     <nixpkgs/nixos/modules/installer/sd-card/sd-image-raspberrypi-installer.nix>
   ];
 
-  boot.kernelPackages = pkgs.linuxPackages_rpi3;
   services.openssh = {
     enable = true;
     permitRootLogin = "yes";
