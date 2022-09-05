@@ -52,5 +52,5 @@
   };
 
   # Set hostname
-  networking.hostName = "PI ";
+  networking.hostName = "pi";
 }
