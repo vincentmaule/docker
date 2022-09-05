@@ -1,9 +1,11 @@
 { pkgs, ... }: {
   nixpkgs.crossSystem.system = "aarch64-linux";
+  
   imports = [
-    <nixpkgs/nixos/modules/installer/sd-card/sd-image-aarch64.nix>
+    <nixpkgs/nixos/modules/installer/sd-card/sd-image-raspberrypi-installer.nix>
   ];
-  boot.kernelPackages = pkgs.zfs.latestCompatibleLinuxPackages; # Raspberry pies have a hard time booting on the LTS kernel.
+
+  boot.kernelPackages = pkgs.linuxPackages_rpi3;
   services.openssh = {
     enable = true;
     permitRootLogin = "yes";
