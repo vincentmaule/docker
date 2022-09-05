@@ -29,7 +29,7 @@
   };
 
   environment.systemPackages = with pkgs; [
-    raspberrypi-tools
+    libraspberrypi
   ];
 
   # File systems configuration for using the installer's partition layout
