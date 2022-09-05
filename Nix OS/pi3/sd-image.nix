@@ -18,9 +18,6 @@
       raspberryPi.version = 3;
       raspberryPi.uboot.enable = true;
       raspberryPi.enable = true;
-
-      # Enables the generation of /boot/extlinux/extlinux.conf
-      generic-extlinux-compatible.enable = true;
     };
   };
 
