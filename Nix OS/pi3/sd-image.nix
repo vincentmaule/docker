@@ -9,7 +9,7 @@
     kernelParams = ["cma=32M"];
     
     # !!! Otherwise (even if you have a Raspberry Pi 2 or 3), pick this:
-    kernelPackages = pkgs.linuxPackages_rpi;
+    kernelPackages = pkgs.linuxPackages_rpi3;
 
     # Cleanup tmp on startup
     cleanTmpDir = true;
