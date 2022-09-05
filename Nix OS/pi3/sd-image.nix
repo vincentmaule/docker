@@ -21,10 +21,6 @@
 
       # Enables the generation of /boot/extlinux/extlinux.conf
       generic-extlinux-compatible.enable = true;
-
-      # NixOS wants to enable GRUB by default
-      grub.enable = false;
-
     };
   };
 
