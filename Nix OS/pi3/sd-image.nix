@@ -1,10 +1,13 @@
 { config, pkgs, lib, ... }:
 {
+  nixpkgs.crossSystem.system = "aarch64-linux";
 
   imports = [
     <nixpkgs/nixos/modules/installer/sd-card/sd-image-aarch64.nix>
   ];
   
+
+
   boot = {
     kernelParams = ["cma=32M"];
     
@@ -17,6 +20,12 @@
     loader = {
       raspberryPi.version = 3;
       raspberryPi.enable = true;
+
+    # Enables the generation of /boot/extlinux/extlinux.conf
+    generic-extlinux-compatible.enable = true;
+
+    # NixOS wants to enable GRUB by default
+    grub.enable = false;
     };
   };
 
@@ -29,6 +38,13 @@
     "/" = {
       device = "/dev/disk/by-label/NIXOS_SD";
       fsType = "ext4";
+    };
+  };
+
+  services = {
+    openssh = {
+      enable = true;
+      permitRootLogin = true;
     };
   };
 
