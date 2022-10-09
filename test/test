@@ -1,3 +1,0 @@
-# syntax=docker/dockerfile:1
-FROM scratch
-RUN /bin/sh echo "Hello World!"
