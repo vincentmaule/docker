@@ -11,7 +11,7 @@
       /home/shaggy/user.nix
     ];
 
-  networking.hostName = "v-server"; # Define your hostname.
+  networking.hostName = "v-home-server"; # Define your hostname.
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   # networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
@@ -61,12 +61,6 @@
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users = {
-    shaggy = {
-      isNormalUser = true;
-      extraGroups = [ "wheel" "libvirtd" "qemu-libvirtd" ]; # Enable ‘sudo’ for the user.
-      packages = with pkgs; [
-      ];
-    };
     cloudflared = {
       isSystemUser = true;
       group = "cloudflared";
@@ -98,14 +92,14 @@
   networking = {
     firewall = {
       enable = true;
-      trustedInterfaces = [ "tailscale0" ];
+      #trustedInterfaces = [ "tailscale0" ];
       checkReversePath = "loose";
       # allowedTCPPorts = [17932 22];
       # allowedUDPPorts = [config.services.tailscale.port];
     };
     interfaces.enp3s0.ipv4.addresses = [ {
       address = "10.0.0.150";
-      prefixLength= 24;
+      prefixLength = 24;
     } ];
 
     defaultGateway = "10.0.0.1";
